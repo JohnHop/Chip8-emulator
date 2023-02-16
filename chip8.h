@@ -8,7 +8,7 @@
 #define FONTSET_START_ADDRESS 0x50 //I caratteri invece a partire dalla posizione 80
 #define FONTSET_SIZE 80 //Perché sono 16 caratteri di 5 bye ciascuno
 
-#define VIDEO_WIDTH 64
+#define VIDEO_WIDTH 64  //Sono le dimensioni standard del video di Chip-8
 #define VIDEO_HEIGHT 32
 
 /* Rappresenta l'intero sistema e non soltanto il processore virtuale */
@@ -16,7 +16,7 @@ class Chip8 {
 public:
 	Chip8();
 	void load_rom(const char* filename);  //Carica la ROM in memoria
-	void cycle(); //Esegue il ciclo di Von Neumann / Unità Operativa
+	void cycle(); //Esegue il ciclo di Von Neumann, ovvero esegue l'Unità Operativa
 
   //Dispositivi
 	uint8_t keypad[16];
@@ -63,10 +63,12 @@ private:
 	uint8_t registers[16];
 	uint16_t index;
 	uint16_t pc;
-	uint16_t stack[16];
 	uint8_t sp;
+
+  uint16_t stack[16];
 	uint16_t opcode;
 
+  //altri dispositivi
   uint8_t memory[4096];
   uint8_t delayTimer;
 	uint8_t soundTimer;

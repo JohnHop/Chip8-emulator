@@ -7,8 +7,7 @@
 
 int main(int argc, char** argv)
 {
-		if (argc != 4)
-	{
+	if(argc != 4) {
 		std::cerr << "Usage: " << argv[0] << " <Scale> <Delay> <ROM>\n";
 		std::exit(EXIT_FAILURE);
 	}
@@ -33,11 +32,9 @@ int main(int argc, char** argv)
 		auto currentTime = std::chrono::high_resolution_clock::now();
 		float dt = std::chrono::duration<float, std::chrono::milliseconds::period>(currentTime - lastCycleTime).count();
 
-		if (dt > cycleDelay) {
+		if(dt > cycleDelay) {
 			lastCycleTime = currentTime;
-
 			chip8.cycle();
-
 			platform.Update(chip8.video, videoPitch);
 		}
 	}

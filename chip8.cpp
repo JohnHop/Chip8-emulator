@@ -10,9 +10,9 @@ Chip8::Chip8()
 : video{}, registers{}, index{}, pc{}, stack{}, sp{}, opcode{}, memory{},
   randGen(std::chrono::system_clock::now().time_since_epoch().count()), randByte{0, 255U} //Warning: narrowing conversion
 {
-	this->pc = ROM_START_ADDRESS; //Il PC ora punta alla prima istruzione della ROM
+	this->pc = ROM_START_ADDRESS; //il PC ora punta alla prima istruzione della ROM
 
-  std::memcpy(memory + FONTSET_START_ADDRESS, fontset, FONTSET_SIZE); //Carico i caratteri in memoria
+  std::memcpy(memory + FONTSET_START_ADDRESS, fontset, FONTSET_SIZE); //carico i caratteri in memoria
 
 	//Inizializzazione delle tabelle per il dispatch dell'opcode
 	table[0x0] = &Chip8::Table0;  //passo al secondo stadio
