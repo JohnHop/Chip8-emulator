@@ -53,7 +53,7 @@ this->pc += 2;  //pc increment
 Each opcode has its equivalent member function, that is a void function with no arguments because operands are decoded inside it. 
 
 ### Decode and Execute
-The last instruction of `cycle()` can be quite obscure for newbies (and not). Let's reveal the magic under it.
+The last instruction of `cycle()` can be quite obscure for newbies. Let's reveal the magic under it.
 
 A CHIP-8 instruction is something like
 ```
