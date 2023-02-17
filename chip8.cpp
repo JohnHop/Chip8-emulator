@@ -289,7 +289,7 @@ void Chip8::OP_Dxyn() {
 }
 
 void Chip8::OP_Ex9E() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
   uint8_t key = registers[x];
 
   if(keypad[key])
@@ -297,7 +297,7 @@ void Chip8::OP_Ex9E() {
 }
 
 void Chip8::OP_ExA1() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
   uint8_t key = registers[x];
 
   if(!keypad[key])
@@ -305,7 +305,7 @@ void Chip8::OP_ExA1() {
 }
 
 void Chip8::OP_Fx07() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   registers[x] = delayTimer;
 }
@@ -367,32 +367,32 @@ void Chip8::OP_Fx0A() {
 }
 
 void Chip8::OP_Fx15() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   this->delayTimer = registers[x];
 }
 
 void Chip8::OP_Fx18() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   this->soundTimer = registers[x];
 }
 
 void Chip8::OP_Fx1E() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   index += registers[x];
 }
 
 void Chip8::OP_Fx29() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
   uint8_t digit = registers[x];
 
   index = FONTSET_START_ADDRESS + (digit * 5);
 }
 
 void Chip8::OP_Fx33() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
   uint8_t value = registers[x];
 
   //es. 345 / 10 = 34.5 dove value = 34 e in memory[index + 2] = 5
@@ -408,7 +408,7 @@ void Chip8::OP_Fx33() {
 }
 
 void Chip8::OP_Fx55() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   for(uint8_t i = 0; i < x; ++i) {
     memory[index + i] = registers[i];
@@ -416,7 +416,7 @@ void Chip8::OP_Fx55() {
 }
 
 void Chip8::OP_Fx65() {
-  uint8_t x = (opcode & 0x0F00u) >> 0x8u;
+  uint8_t x = (opcode & 0x0F00u) >> 8u;
 
   for(uint8_t i = 0; i < x; ++i) {
     registers[i] = memory[index + i];
